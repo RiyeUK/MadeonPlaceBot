@@ -59,7 +59,7 @@ AutoDraw = {
 	getGuideColorOfTile: function(x,y){
 		var col = AutoDraw.guideContext.getImageData(x-AutoDraw.offsetX,y-AutoDraw.offsetY,1,1).data;
 		if (col[3] == 0){
-			return false;
+			return null;
 		} else {
 			return AutoDraw.convertColor(AutoDraw.rgbToHex(col[0],col[1],col[2]));
 		}
@@ -76,7 +76,7 @@ AutoDraw = {
 				}
 				var current = AutoDraw.getColorOfTile(AutoDraw.offsetX + xx, AutoDraw.offsetY + yy);
 				var guide   = AutoDraw.getGuideColorOfTile(AutoDraw.offsetX + xx, AutoDraw.offsetY + yy);
-				if (guide != false && current != guide){
+				if (guide != null && current != guide){
 					AutoDraw.next = [AutoDraw.offsetX + x, AutoDraw.offsetY + y, guide];
 					AutoDraw.none = false;
 					return AutoDraw.next;
